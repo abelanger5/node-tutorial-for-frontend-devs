@@ -5,7 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // New Code
-var monk = require('monk');
+var monk = require('monk').then(() => {
+  console.log('Connected correctly to server')
+});
+
 var db = monk(process.env.MONGO_URI);
 
 var indexRouter = require('./routes/index');
